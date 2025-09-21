@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+</head>
+<body>
+    <form>
+        <input type="password" placeholder="Wpisz hasło" id="password1">
+        <input type="password" placeholder="Potwierdz hasło" id="password2">
+        <input type="number" placeholder="podaj wiek" id="age">
+        <input type="submit">
+    </form>
+</body>
+<script>
+const password1 = document.getElementById("password1");
+const password2 = document.getElementById("password2");
+const age = document.getElementById("age");
+const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{9,}$/; // regex pozyczony
+
+password1.addEventListener("input", () => {
+  if (regex.test(password1.value)) {
+    password1.style.color = "black"; 
+  } else {
+    password1.style.color = "red";  
+  }
+});
+
+addEventListener("submit", (event) => { 
+    event.preventDefault()
+    if (password1.value !== password2.value || !regex.test(password1.value)){
+        alert("Hasło się nie zgadza")
+    }
+    else {
+        if(age.value>18){
+            window.location.href = "kotki.html";
+        }
+        else{
+            window.location.href = "pieski.html";
+        }
+    }
+});
+
+</script>
+</html>
